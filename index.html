@@ -323,7 +323,7 @@ const storedImageData = {
 }
 
 
-  const retrievedJsonString = getCookie('storedImageData');
+  const retrievedJsonString = await localforage.getItem( "storedImageData" );
        
 if (retrievedJsonString) {
     const retrievedJsonObject = JSON.parse(retrievedJsonString);
@@ -332,7 +332,7 @@ if (retrievedJsonString) {
        // --- Step 2 & 3: Check for cookie on DOM load and perform action ---
 document.addEventListener('DOMContentLoaded', (event) => {
       const gridContainer = document.getElementById('imageGrid');
-    const savedImage = localStorage.getItem('selectedImage');
+    const savedImage = await localforage.getItem( "storedImageData" );
   const retrievedJsonString = getCookie('storedImageData');
 
     if (savedImage) {
