@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FakeChan</title>
-  <script src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.6.4/src/core.min.js"></script>
+ <script src="localforage.js"></script>
 </head>
 <body>
    
@@ -272,6 +272,7 @@ const storedImageData = {
                setJsonCookie("storedImageData", retrievedValue, 7); // Stores for 7 days
               const objectURL = URL.createObjectURL(file);
               let jsonString = JSON.stringify(base64String);
+              localforage.setItem( "storedImageData", blob );
 
                         alert("Your stored .JSON image cookie data " + objectURL + " has been stored into the client."); 
               
