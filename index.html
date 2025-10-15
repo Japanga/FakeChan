@@ -263,6 +263,7 @@ const storedImageData = {
               // Get the Base64 data URL
       const base64String = e.target.result;
       
+              
       // Store the Base64 string in localStorage
       localStorage.setItem('selectedImage', base64String);
               
@@ -308,31 +309,7 @@ const storedImageData = {
 </script>
     
      <script>
-        function getJsonCookie(name) {
-  const nameEQ = name + "=";
-  const ca = document.cookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) === 0) {
-      const cookieValue = c.substring(nameEQ.length, c.length);
-      try {
-        return JSON.parse(cookieValue); // Parse the JSON string back to an object
-      } catch (e) {
-        console.error("Error parsing JSON cookie:", e);
-        return null; // Return null if parsing fails
-      }
-    }
-  }
-  return null;
-} 
-
-// Example usage:
-const retrievedObject = getJsonCookie("storedImageData");
-  
-if (retrievedObject) {
-  alert("Your stored .JSON image cookie data " + retrievedObject.name + " has been called been called by the client."); // Access properties of the retrieved object
-}
+       
        // --- Step 2 & 3: Check for cookie on DOM load and perform action ---
 document.addEventListener('DOMContentLoaded', (event) => {
       const gridContainer = document.getElementById('imageGrid');
@@ -350,9 +327,8 @@ const day = currentDate.getDate().toString().padStart(2, '0');
 const formattedDate = `${year}-${month}-${day}`;
     // Create an image element
         const storedText = localStorage.getItem('storedText');
-      const retrievedObject = getJsonCookie("storedImageData");
     const newImage = document.createElement('img');
-    newImage.src = retrievedObject; // Set the image source
+    newImage.src = savedImage; // Set the image source
     // Append the image to the grid item, and the grid item to the container
     newGridItem.appendChild(newImage);
     const overlayText = document.createElement('div2');
@@ -371,6 +347,7 @@ const formattedDate = `${year}-${month}-${day}`;
 
 
         </script>
+    
     
     
 <script>
